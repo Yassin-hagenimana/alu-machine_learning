@@ -4,11 +4,14 @@
     that calculates the derivative of a polynomial
 '''
 
-
 def poly_derivative(poly):
     '''
         calculates the derivative of a polynomial
     '''
-    if not isinstance(poly, list) or len(poly) <= 1:
+    if not isinstance(poly, list) or not all(isinstance(x, (int, float)) for x in poly):
+        return None
+
+    if len(poly) <= 1:
         return [0]
+
     return [poly[i] * i for i in range(1, len(poly))]
